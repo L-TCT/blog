@@ -1,35 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}My Awesome Blog{% endblock %}
+{% block title %}Liste des articles{% endblock %}
 
 {% block body %}
-<h2>Liste d'articles</h2>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Titre</th>
-      <th scope="col">Date Création</th>
-      <th scope="col">Statut</th>
-      <th scope="col">Categorie</th>
-      <th scope="col">Tags</th>
-      <th scope="col">Voir</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for article in articles %}
-  {% set cat = article.idCategorie %}
-  {% set tags = article.idTag %}
-    <tr>
-      <th scope="row">{{ article.titreArticle }}</th>
-      <td>{{ article.dateCreationArticle|date('d/m/Y') }}</td>
-      <td>{{ article.statutArticle }}</td>
-      <td>{{ cat.nomCategorie }}</td>
-      {% for tag in tags %}
-      <td>{{ tag.nomTag }}</td>
+<div class=container>
+  <div class="d-flex justify-content-around mt-4 mb-4">
+      <h1>Liste des articles</h1>
+      <a class="btn btn-primary d-flex align-items-center" href="{{path('admin')}}">Admin</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th >Titre</th>
+        <th>Date Création</th>
+        <th >Statut</th>
+        <th>Categorie</th>
+        <th>Tags</th>
+        <th>Voir</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for article in articles %}
+    {% set cat = article.idCategorie %}
+    {% set tags = article.idTag %}
+      <tr>
+        <th>{{ article.titreArticle }}</th>
+        <td>{{ article.dateCreationArticle|date('d/m/Y') }}</td>
+        <td>{{ article.statutArticle }}</td>
+        <td>{{ cat.nomCategorie }}</td>
+        <td>{% for tag in tags %} *{{ tag.nomTag }}{% endfor %}</td>
+        <td><a class="btn btn-info btn-sm" href="{{path('view', {'id': article.id})}}" role="button">Link</a></td>
+      </tr>
       {% endfor %}
-      <td><a class="btn btn-primary" href="{{path('view', {'id': article.id})}}" role="button">Link</a></td>
-    </tr>
-    {% endfor %}
-</table>
+  </table>
+</div>
 {% endblock %}
