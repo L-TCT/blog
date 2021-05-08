@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ViewController!{% endblock %}
+
+{% block body %}
+{% set cat = article.idCategorie %}
+{% set tags = article.idTag %}
+<h2> {{ article.titreArticle }} </h2>
+<span> Catégorie: {{ cat.nomCategorie }}</span>
+{% for tag in tags %}
+<span>Tag : {{ tag.nomTag }}</span>
+{% endfor %}
+<p> {{ article.contenuArticle }} </p>
+
+{% endblock %}

@@ -13,6 +13,7 @@
       <th scope="col">Statut</th>
       <th scope="col">Categorie</th>
       <th scope="col">Tags</th>
+      <th scope="col">Voir</th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +28,7 @@
       {% for tag in tags %}
       <td>{{ tag.nomTag }}</td>
       {% endfor %}
+      <td><a class="btn btn-primary" href="{{path('view', {'id': article.id})}}" role="button">Link</a></td>
     </tr>
     {% endfor %}
 </table>
