@@ -3,9 +3,9 @@
 {% block title %}Liste des articles{% endblock %}
 
 {% block body %}
-<div class=container>
+<div class="container">
   <div class="d-flex justify-content-around mt-4 mb-4">
-      <h1>Liste des articles</h1>
+      <h2>Liste des articles</h2>
       <a class="btn btn-primary d-flex align-items-center" href="{{path('admin')}}">Admin</a>
   </div>
   <table class="table">
@@ -16,7 +16,7 @@
         <th >Statut</th>
         <th>Categorie</th>
         <th>Tags</th>
-        <th>Voir</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
         <td>{{ article.statutArticle }}</td>
         <td>{{ cat.nomCategorie }}</td>
         <td>{% for tag in tags %} *{{ tag.nomTag }}{% endfor %}</td>
-        <td><a class="btn btn-info btn-sm" href="{{path('view', {'id': article.id})}}" role="button">Link</a></td>
+        <td><a class="btn btn-info btn-sm" href="{{path('view', {'id': article.id})}}" role="button">Voir</a></td>
       </tr>
       {% endfor %}
   </table>

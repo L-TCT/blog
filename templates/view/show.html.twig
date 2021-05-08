@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ViewController!{% endblock %}
+{% block title %}Vue{% endblock %}
 
 {% block body %}
 {% set cat = article.idCategorie %}
 {% set tags = article.idTag %}
-<h2> {{ article.titreArticle }} </h2>
-<span> Catégorie: {{ cat.nomCategorie }}</span>
-{% for tag in tags %}
-<span>Tag : {{ tag.nomTag }}</span>
-{% endfor %}
-<p> {{ article.contenuArticle }} </p>
-
+<div class="container w-50 center ">
+        <div class="d-flex justify-content-left mt-4 mb-4">
+            <h2 class="fs-1 fw-bold"> {{ article.titreArticle }} </h2>
+            <a class="btn btn-primary d-flex align-items-center ms-5" href="{{path('home')}}">Liste</a>
+        </div>
+        <div class="flex-column mt-4 mb-4">
+            <div class="mb-2"><span class="fw-bold me-2">Catégorie:</span> {{ cat.nomCategorie }}</div>
+            <div><span class="fw-bold me-2">Tag:</span>{% for tag in tags %}*{{ tag.nomTag }}{% endfor %}</div>
+        </div>
+        <p class="fs-5"> {{ article.contenuArticle }} </p>
+</div>
 {% endblock %}
