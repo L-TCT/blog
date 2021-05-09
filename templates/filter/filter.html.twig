@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles par categorie{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="d-flex justify-content-around mt-4 mb-4">
+      <h2>Liste des articles</h2>
+      <a class="btn btn-primary d-flex align-items-center" href="{{path('admin')}}">Admin</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th >Titre</th>
+        <th>Date Création</th>
+        <th >Statut</th>
+        <th>Categorie</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for categorie in categories %}
+    {% set art = getIdCategorie() %}
+      <tr>
+        <th>{{ art.titreArticle }}</th>
+        <td>{{ art.dateCreationArticle|date('d/m/Y') }}</td>
+        <td>{{ art.statutArticle }}</td>
+        <td>{{ categorie.nomCategorie }}</td>
+        <td><a class="btn btn-info btn-sm" href="{{path('view', {'id': article.id})}}" role="button">Voir</a></td>
+      </tr>
+      {% endfor %}
+  </table>
+</div>
+{% endblock %}
