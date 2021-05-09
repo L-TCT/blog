@@ -21,7 +21,7 @@
       <tr>
         <th>{{ article.titreArticle }}</th>
         <td>{{ article.dateCreationArticle|date('d/m/Y') }}</td>
-        <td>{{ article.statutArticle }}</td>
+        <td>{{ article.statutArticle}}</td>
         <td>{{ cat.nomCategorie }}</td>
         <td>{% for tag in tags %} *{{ tag.nomTag }}{% endfor %}</td>
         <td><a class="btn btn-info btn-sm" href="{{path('view', {'id': article.id})}}" role="button">Voir</a></td>

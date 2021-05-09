@@ -1,22 +1,22 @@
 
 window.onload = () => {
-    const FiltersForm = document.querySelector("#filtersTag");
+    const FiltersForm = document.querySelector("#filterStatut");
     
     //on boucle sur les input
     
- document.querySelectorAll("#filtersTag input").forEach(input => {
+ document.querySelectorAll("#filterStatut input").forEach(input => {
      input.addEventListener("change", () => {
          // on intercepte les clics
          // on recupère les données du form
          const Form = new FormData(FiltersForm);
-         
+         console.log(Form)
          //on fabrique l'url
          const Params = new URLSearchParams()
-         
-         Form.forEach((value, key) => {
-             Params.append(key, value);
+         const key = "statutArticle"
+         Form.forEach((value,key) => {
+             Params.append(value,key);
          });
-         
+         console.log(Params)
          // On récupère l'url active
          const Url = new URL(window.location.href);
          

@@ -1,5 +1,7 @@
-{% extends 'base.html.twig' %}
 
+{% extends 'base.html.twig' %}
+{# {% set queryParams = app.request.query.all %}
+{% set queryString = queryParams|filterStatut(value)|url_encode %} #}
 {% block title %}Liste des articles{% endblock %}
 
 {% block body %}
@@ -7,19 +9,31 @@
   <div class="row">
       <div class="col-sm-2">
         <p>Filtrer</p>
-          <form id="filtersTag">
-            {% for tag in tags %}
-              <p><input type="checkbox" name="tags[]" id="tag{{tag.id}}" value="{{tag.id}}">
-                  <label for="tag{{tag.id}}">{{tag.nomTag}}</label></p>
-            {% endfor %}
+          <form id="filterStatut">
+              <p><input type="checkbox" name="brouillon" id="brouillon" value="Brouillon">
+                  <label for="brouillon">Brouillon</label></p>
+              <p><input type="checkbox" name="publié" id="publié" value="Publié">
+                  <label for="publié">Publié</label></p>
+              <p><input type="checkbox" name="corbeille" id="corbeille" value="Corbeille">
+                  <label for="corbeille">Corbeille</label></p>
           </form>
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle mb-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Catégorie
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               {% for categorie in categories %}
               <li><a class="dropdown-item" href="{{path('filterCategorie', {'categorie': categorie.id})}}">{{categorie.nomCategorie}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Tag
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              {% for tag in tags %}
+              <li><a class="dropdown-item" href="#">{{tag.nomTag}}</a></li>
               {% endfor %}
             </ul>
           </div>

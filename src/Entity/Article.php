@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Article
 {
+    
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -88,6 +89,7 @@ class Article
 
         return $this;
     }
+    
 
     public function getDateCreationArticle(): ?\DateTimeInterface
     {

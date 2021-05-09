@@ -17,10 +17,10 @@ class HomeController extends AbstractController
      * @Route("/", name="home")
      */
     public function index(ArticleRepository $articleRepository, CategorieRepository $categorieRepository, TagRepository $tagRepository, Request $request): Response
-    {//on recupère les filtresTag
-        $filtersTag = $request->get("tags");
+    {//on recupère les filtres
+        // $filterStatut = $request->get("statutArticle");
         
-        $articles = $articleRepository->allArticles($filtersTag);
+        $articles = $articleRepository->allArticles();
        
         $categories = $categorieRepository->findAll();
         
@@ -37,8 +37,6 @@ class HomeController extends AbstractController
             ]);
         }
         
-        //on recupère les filtresTag
-        $filtersTag = $request->get("tags");
       
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
