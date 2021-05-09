@@ -7,6 +7,7 @@ use App\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ViewController extends AbstractController
 {
@@ -16,9 +17,11 @@ class ViewController extends AbstractController
     public function show(int $id, ArticleRepository $articleRepository): Response
     {
         $article = $articleRepository->find($id);
-        return $this->render('view/show.html.twig', [
-            'article' => $article,
-        ]);
+        
+        if(!$article){
+            throw new NotFoundHttpException('Pas d\'article trouvée');
+        }
+        return $this->render('view/show.html.twig', compact('article'));
     }
 
 }

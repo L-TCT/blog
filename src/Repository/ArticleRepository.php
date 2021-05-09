@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Repository;
-
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
+use App\Entity\Categorie;
+use App\Entity\Tag;
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
  * @method Article|null findOneBy(array $criteria, array $orderBy = null)
@@ -19,6 +19,53 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
     
+   /**
+    * @return Article[] Returns an array of Article objects
+    */
+   
+    public function findByCategorie(Categorie $categorie): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.idCategorie = :categorie')
+            ->setParameter('categorie', $categorie)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+        /**
+        * @return Article[] Returns an array of Article objects
+        */
+    
+    public function allArticles($filtersTag)
+    {
+        $query = $this->createQueryBuilder('a');
+            if($filtersTag!=null){
+               $query->andWhere('a.id = :tags)')
+                    ->setParameter(':tags', array_values($filtersTag));
+            }
+            $query->orderBy('a.id', 'ASC');
+            return
+            $query ->getQuery()
+            ->getResult()
+        ;
+    }
+   
+    
+ 
+    /**
+    * @return Article[] Returns an array of Article objects
+    */
+   
+    public function findByTag(Tag $tag): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.idTags = :tag')
+            ->setParameter('tag', $tag)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
  
 
     // /**

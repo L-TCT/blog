@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use Doctrine\Common\Annotations\Annotation\Enum;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -25,7 +26,7 @@ class ArticleCrudController extends AbstractCrudController
             DateField::new('datePublicationArticle'),
             TextareaField::new('contenuArticle'),
             AssociationField::new('idCategorie'),
-            AssociationField::new('idTag'), 
+            AssociationField::new('idTag'),
         ];
     }
 
