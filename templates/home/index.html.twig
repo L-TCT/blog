@@ -33,7 +33,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               {% for tag in tags %}
-              <li><a class="dropdown-item" href="#">{{tag.nomTag}}</a></li>
+              <li><a class="dropdown-item" href="{{path('filterTag', {'tag': tag.id})}}">{{tag.nomTag}}</a></li>
               {% endfor %}
             </ul>
           </div>

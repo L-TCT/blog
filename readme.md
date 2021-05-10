@@ -47,11 +47,9 @@ Il s'ouvrira sur la première page du site (liste des Articles)
 
  - Filtrage sur la page home des statuts via des checkboxs,
  
- - Affichage de la liste filtrée par catégorie (via une nouvelle page filtre) : 
-        -  en selectionnant la catégorie dans le menu déroulant sur la première page,
-        -  en cliquant sur la catégorie dans la vue de l'article,
-
- - A ce jour, pas de filtrage via les tags
+ - Affichage de la liste filtrée par catégorie ou par tag (via une nouvelle page filtre) : 
+        -  en selectionnant la catégorie ou le tag dans le menu déroulant sur la première page,
+        -  en cliquant sur la catégorie ou le tag dans la vue de l'article,
 
  ### Partie Admin
 

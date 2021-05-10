@@ -54,10 +54,10 @@ class ArticleRepository extends ServiceEntityRepository
     * @return Article[] Returns an array of Article objects
     */
    
-    public function findByTag(Tag $tag): array
+    public function findByTag($tag): array
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.idTags = :tag')
+            ->andWhere(':tag MEMBER OF a.idTag')
             ->setParameter('tag', $tag)
             ->getQuery()
             ->getResult()

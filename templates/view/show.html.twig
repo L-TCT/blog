@@ -13,7 +13,7 @@
         </div>
         <div class="flex-column mt-4 mb-4">
             <div class="mb-2"><span class="fw-bold me-2">Catégorie:</span><a href="{{path('filterCategorie', {'categorie': cat.id})}}"> {{ cat.nomCategorie }}</a></div>
-            <div><span class="fw-bold me-2">Tag:</span>{% for tag in tags %}<a href="#">*{{ tag.nomTag }}</a>{% endfor %}</div>
+            <div><span class="fw-bold me-2">Tag:</span>{% for tag in tags %}<a href="{{path('filterTag', {'tag': tag.id})}}">*{{ tag.nomTag }}</a>{% endfor %}</div>
         </div>
         <p class="fs-5"> {{ article.contenuArticle }} </p>
 </div>
