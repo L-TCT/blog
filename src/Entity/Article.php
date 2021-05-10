@@ -12,7 +12,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Article
 {
-    
+    CONST STATUT = [
+        'Brouillon' => 'Brouillon',
+        'Publié' => 'Publié',
+        'Corbeille' => 'Corbeille'
+    ];
+    //  CONST Brouillon = 'Brouillon';
+    //  CONST Publié = 'Publié';
+    //  CONST Corbeille = 'Corbeille';
+   
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -83,11 +92,14 @@ class Article
         return $this->statutArticle;
     }
 
-    public function setStatutArticle(string $statutArticle): self
+    public function setStatutArticle(string $statutArticle)
     {
-        $this->statutArticle = $statutArticle;
-
-        return $this;
+        $statut = self::STATUT;
+        if (in_array($statutArticle, $statut))
+        {
+            $this->statutArticle = $statutArticle;
+           
+        }
     }
     
 
