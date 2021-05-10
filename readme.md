@@ -1,6 +1,3 @@
-
-## Installation
-
 # My awesome blog
 My awesome blog est un test d'évaluation back-end dans le cadre de la formation developpeur web et web mobile
 
