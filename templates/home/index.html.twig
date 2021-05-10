@@ -1,7 +1,7 @@
 
 {% extends 'base.html.twig' %}
-{# {% set queryParams = app.request.query.all %}
-{% set queryString = queryParams|filterStatut(value)|url_encode %} #}
+{% set queryParams = app.request.query.all %}
+
 {% block title %}Liste des articles{% endblock %}
 
 {% block body %}
@@ -10,11 +10,11 @@
       <div class="col-sm-2">
         <p>Filtrer</p>
           <form id="filterStatut">
-              <p><input type="checkbox" name="brouillon" id="brouillon" value="Brouillon">
+              <p><input type="checkbox" name="statutArticle[]" id="brouillon" value="Brouillon">
                   <label for="brouillon">Brouillon</label></p>
-              <p><input type="checkbox" name="publié" id="publié" value="Publié">
+              <p><input type="checkbox" name="statutArticle[]" id="publié" value="Publié">
                   <label for="publié">Publié</label></p>
-              <p><input type="checkbox" name="corbeille" id="corbeille" value="Corbeille">
+              <p><input type="checkbox" name="statutArticle[]" id="corbeille" value="Corbeille">
                   <label for="corbeille">Corbeille</label></p>
           </form>
           <div class="dropdown">

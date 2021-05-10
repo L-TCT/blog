@@ -37,21 +37,19 @@ class ArticleRepository extends ServiceEntityRepository
         * @return Article[] Returns an array of Article objects
         */
     
-    public function allArticles()
-    {       return
-        $this->createQueryBuilder('a')
-            // if($filterStatut!=null){
-            //     $this->andWhere('a.statutArticle = :statutArticle)')
-            //         ->setParameter(':statutArticle', array_values($filterStatut));
-            // }
-            ->orderBy('a.id', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
+    public function allArticles($filterStatut = null)
+    {
+        $qb = $this->createQueryBuilder('a')
+                   ->orderBy('a.id', 'ASC');
+                   if($filterStatut != null){
+                   $qb->andWhere('a.statutArticle IN(:statuts)')
+                   ->setParameter(':statuts', array_values($filterStatut));
+                   }
+                   $query = $qb->getQuery();
+                   return $query->execute();
     }
    
-    
- 
+
     /**
     * @return Article[] Returns an array of Article objects
     */

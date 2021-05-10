@@ -12,9 +12,8 @@ window.onload = () => {
          console.log(Form)
          //on fabrique l'url
          const Params = new URLSearchParams()
-         const key = "statutArticle"
          Form.forEach((value,key) => {
-             Params.append(value,key);
+             Params.append(key,value);
          });
          console.log(Params)
          // On récupère l'url active

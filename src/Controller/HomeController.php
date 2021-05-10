@@ -18,9 +18,9 @@ class HomeController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository, CategorieRepository $categorieRepository, TagRepository $tagRepository, Request $request): Response
     {//on recupère les filtres
-        // $filterStatut = $request->get("statutArticle");
+        $filterStatut = $request->get("statutArticle");
         
-        $articles = $articleRepository->allArticles();
+        $articles = $articleRepository->allArticles($filterStatut);
        
         $categories = $categorieRepository->findAll();
         

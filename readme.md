@@ -31,20 +31,32 @@ Après l'installation, vérifier dans le fichier .env l'URL de la database.
 
 ```bash
 npm install
+composer install
+npm install --force
+npm run build
 symfony serve -d
 ```
 Il s'ouvrira sur la première page du site (liste des Articles)
 
 ## Fonctionnalités existantes
- - liste des articles
+
+###  Liste, vue, filtrage
+ - Liste des articles sur la page home,
  
- - vue d'un article (en cliquant sur le bouton voir )
+ - Vue d'un article (en cliquant sur le bouton voir ) sur la page view,
+
+ - Filtrage sur la page home des statuts via des checkboxs,
  
- - affichage de la liste filtrée par catégorie : -  en selectionnant la catégorie dans le menu déroulant sur la première page
-                                                 -  en cliquant sur la catégorie dans la vue de l'article
+ - Affichage de la liste filtrée par catégorie (via une nouvelle page filtre) : 
+        -  en selectionnant la catégorie dans le menu déroulant sur la première page,
+        -  en cliquant sur la catégorie dans la vue de l'article,
+
+ - A ce jour, pas de filtrage via les tags
+
+ ### Partie Admin
+
+ - il n'y a pas de mot de passe pour la partie Admin,
                                                  
- - la création, la modification et la suppression sont accesibles par le bouton "Admin" pour les articles, les catégories et les tags
- 
- - il n'y a pas de mot de passe pour la partie admin
- 
- - Pour revenir à la première page, cliquer sur "Home"
+ - La création, la modification et la suppression sont accesibles par le bouton "Admin" pour les articles, les catégories et les tags,
+  
+ - Pour revenir à la  page 'Home', cliquer sur "Home",
